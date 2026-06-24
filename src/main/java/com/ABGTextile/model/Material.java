@@ -4,6 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,26 +18,67 @@ import jakarta.persistence.GenerationType;
 //	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 //	);
 
+
 @Entity
-public class Material 
+@Table(name="materials")
+public class Material
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Long materialId	;
 	
 	private String name;
 	
-	private String text;
+	private String description;
 	
 	private String category;
 	
 	@CreationTimestamp
-	@Column(name="created_at", nullable = false )
-	private LocalDateTime createdAt;
-	
-	@UpdateTimestamp
-	@Column(name="update_at" , nullable = false)
-	private LocalDateTime updatedAt;
-	
+	private LocalDateTime cretaedAt;
 
+	// Getter and Setter 
+	public Long getMaterialId() {
+		return materialId;
+	}
+
+	public void setMaterialId(Long materialId) {
+		this.materialId = materialId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public LocalDateTime getCretaedAt() {
+		return cretaedAt;
+	}
+
+	public void setCretaedAt(LocalDateTime cretaedAt) {
+		this.cretaedAt = cretaedAt;
+	}
+	
+	
+	
+	
 }
+
